@@ -10,7 +10,9 @@ window.model = {
 		this.b = document.getElementById('b').value
 		this.c = document.getElementById('c').value
 		this.d = document.getElementById('d').value
-	},
+
+
+},
 	findexp: function (expression) {
 		var isexpfinished = 1, offset = 0;
 		var j, i;
@@ -495,6 +497,7 @@ window.view = {
 		document.getElementById('b').value = b
 		document.getElementById('c').value = c
 		document.getElementById('d').value = d
+		
 		document.getElementById('selectedExpression').value = expression	
 		if ( environment === 'logical' ) {
 			document.getElementById('logicalExpressions').className = 'button loopList'
@@ -540,16 +543,27 @@ window.view = {
 		this.disableElement('b')
 		this.disableElement('c')
 		this.disableElement('d')
+		
 		document.getElementById('buttonSave').className += ' hide'
-		document.getElementById('buttonEdit').className = 'button editButton'
+		(document.getElementById('buttonEdit').className = 'button editButton')
+			
 	},
+
+	
 	deFreezeInputs: function () {
 		this.enableElement('a')
 		this.enableElement('b')
 		this.enableElement('c')
 		this.enableElement('d')
 		document.getElementById('buttonEdit').className += ' hide'
-		document.getElementById('buttonSave').className = 'button saveButton'
+		if(document.getElementById('buttonSave').className = 'button saveButton')
+		{   
+		this.a = document.getElementById('a').value=0
+		this.b = document.getElementById('b').value=0
+		this.c = document.getElementById('c').value=0
+		this.d = document.getElementById('d').value=0
+
+				}
 	},
 	killWhiteSpaces: function (expression) {
 			return expression.replace(/\s+/g, '')
@@ -778,7 +792,7 @@ window.view = {
 		else if ( selectedOption === 'Bitwise' )
 			var isValid = this.validateBitwiseExpression(this.expression)
 		if ( isValid ) {
-      console.log("hello");
+      
 			this.printFirstStep(this.expression)
 			this.disableElement('buttonStart')
 			this.changeClass('buttonStart', 'buttonDisable startButton')
@@ -893,6 +907,7 @@ window.view = {
 	activateEvents: function() {
 		this.addClickEvent('buttonSave', function () { view.freezeInputs() })
 		this.addClickEvent('buttonEdit', function () { view.deFreezeInputs() })
+			
 		this.addClickEvent('buttonStart', function () { view.validateExpression() })
 		this.addClickEvent('buttonNext', function () { view.evaluate() })
 		this.addChangeEvent('operatorList', function () { view.setOperatorEnvironment() })
