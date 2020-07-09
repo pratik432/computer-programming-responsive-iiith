@@ -167,17 +167,21 @@ window.view = {
     	this.clearDivs()
     	var selected_loop = this.getSelectedLoop()
 		var inputValue = document.getElementById('simpleLoopInput').value
-		if (selected_loop === 'for' && inputValue !== '' && !isNaN(model.inp) )
+		if (selected_loop === 'for' && inputValue !== '' && inputValue < 21 && !isNaN(model.inp) )
 		{
 			this.displayLoop('forLoopContent', 'codeContentFor1')
 		}
-		if (selected_loop === 'while' && inputValue !== '' && !isNaN(model.inp))
+		if (selected_loop === 'while' && inputValue !== '' && inputValue < 21 && !isNaN(model.inp))
 		{
 			this.displayLoop('whileLoopContent', 'codeContentWhile1')
 		}
-		if (selected_loop === 'do-while' && inputValue !== '' && !isNaN(model.inp))
+		if (selected_loop === 'do-while' && inputValue !== ''&& inputValue < 21 && !isNaN(model.inp))
 		{
 		 	this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
+		}
+		if(inputValue > 20)
+		{    
+			alert("INVALID INPUT");
 		}
 		this.disableButton('btnStart')
 		this.changeClass( 'btnStart', 'buttonDisable startButton')
