@@ -19,13 +19,12 @@ window.view = {
 	},
 	getInput: function() {
 		 var input = Number(document.getElementById('input').value)
-		 if ( input === 0 )
-		 	alert('Enter number of disks first !')
-		 else if ( isNaN(input) === true )
+		
+		 
+		if ( isNaN(input) === true )
 			alert('Number of disks must be an integer value !')
-		 else if ( input > 5 || input % 1 !== 0 )
-			alert('Only integral value (Greater than equal to 1 and less than equal to 5) is accepted !')
-		 else {
+		
+		else {
 			this.disableElement('btnOk')
 			this.enableElement('btnStart')
 			this.disableElement('input')
@@ -35,8 +34,8 @@ window.view = {
 			this.totalDisks = input
 			var elements = document.getElementById('1').childNodes
 			for ( i = 0 ; i < input ; i++ )
-				elements[i].className += ' ' + this.disks[i]
-		}
+				elements[i].className += ' ' + this.disks[i]}
+		 
 	},
 	changeClass: function(id, className) {
 		document.getElementById(id).className = className
@@ -72,7 +71,10 @@ window.view = {
 		document.getElementById('line12').style.fontWeight = 'normal'
 		this.changeClass('line1', 'showDivInRed')
 		this.changeClass('line13', '')
-		this.disableElement('btnStart')
+		var input = Number(document.getElementById('input').value)
+		if (input > 10)
+		{alert('INVALID INPUT')
+		this.disableElement('btnStart')}
 		this.enableElement('btnNext')
 		this.changeClass('btnStart', 'buttonDisable startButton')
 		this.changeClass('btnNext', 'button nextButton')
@@ -81,7 +83,9 @@ window.view = {
 		document.getElementById('code').className = 'hide'
 		this.changeClass('line1', 'showDiv')
 		this.disableElement('btnNext')
+
 		this.disableElement('btnStart')
+				
 		this.enableElement('btnOk')
 		this.changeClass('btnOk', 'button okButton')
 		this.changeClass('btnNext', 'buttonDisable nextButton')
